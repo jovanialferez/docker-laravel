@@ -1,13 +1,11 @@
-FROM alpine:3.5
+FROM alpine:latest
 MAINTAINER jovani <vojalf@gmail.com>
 
 RUN apk upgrade -q -U -a \
     && apk --no-cache add php7 php7-fpm php7-mysqli php7-json php7-openssl php7-curl php7-gd php7-zip \
     php7-zlib php7-xml php7-phar php7-intl php7-dom php7-simplexml php7-tokenizer php7-xmlreader php7-xmlwriter php7-ctype \
     php7-mbstring php7-session php7-pdo php7-pdo_mysql php7-mongodb php7-fileinfo php7-bcmath nginx supervisor curl git nodejs nodejs-npm \
-    --repository http://dl-cdn.alpinelinux.org/alpine/edge/main/ \
-    --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing/ \
-    --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/
+    --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing/ 
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ && mv /usr/bin/composer.phar /usr/bin/composer
 
